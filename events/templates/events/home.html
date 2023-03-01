@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+{% load static %}
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -86,16 +87,17 @@
     <nav class="navbar navbar-expand-lg navbar-light font-monospace"
          style="background-color: #efce28;">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">My Awesome Blog</a>
+            <a class="navbar-brand" href="{% url 'home' %}">My Awesome Blog</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
                     aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav ms-auto">
-                    <a class="nav-link" aria-current="page" href="#">About me</a>
-                    <a class="nav-link" href="#">Facebook</a>
-                    <a class="nav-link" href="#">Blog</a>
+                    <a class="nav-link" aria-current="page" target="_blank" href="{% static 'AboutMe.txt' %}">About me</a>
+                    <a class="nav-link" target="_blank" rel="noopener noreferrer"
+                       href="https://www.facebook.com/RyzhaievSerhii/">Facebook</a>
+                    <a class="nav-link" href="{% url 'show-blog' %}">Blog</a>
                 </div>
             </div>
         </div>
@@ -115,11 +117,15 @@
                 <p>
                     <a href="mailto:rsp89.we@gmail.com" class="btn btn-primary my-2">Mail me</a>
                 </p>
+
+                <img src="{% static 'funny-illustration-3d-cartoon-backpacker.jpg' %}" alt=""
+                     height="300" width="500" class="img-fluid">
+
             </div>
         </div>
     </section>
 
-    <div class="album py-5 bg-light">
+    <div class=" album py-5 bg-light">
         <div class="container">
 
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">

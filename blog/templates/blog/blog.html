@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+{% load static %}
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -86,16 +87,18 @@
     <nav class="navbar navbar-expand-lg navbar-light font-monospace"
          style="background-color: #efce28;">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">My Awesome Blog</a>
+            <a class="navbar-brand" href="{% url 'home' %}">My Awesome Blog</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
                     aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav ms-auto">
-                    <a class="nav-link" aria-current="page" href="#">About me</a>
-                    <a class="nav-link" href="#">Facebook</a>
-                    <a class="nav-link active" href="#">Blog</a>
+                    <a class="nav-link" aria-current="page" target="_blank" href="{% static 'AboutMe.txt' %}">About
+                        me</a>
+                    <a class="nav-link" target="_blank" rel="noopener noreferrer"
+                       href="https://www.facebook.com/RyzhaievSerhii/">Facebook</a>
+                    <a class="nav-link" href="{% url 'show-blog' %}">Blog</a>
                 </div>
             </div>
         </div>
@@ -107,7 +110,7 @@
     <h1 class="pt-4 pb-5">Resent Posts</h1>
 
     {% for post in posts.all %}
-        <a href=""><h2>{{ post.title }}</h2></a>
+        <a href="{% url 'specific_post' post.id %}"><h2>{{ post.title }}</h2></a>
         <br/>
         <img src="{{ post.image.url }}" alt="" height="300" width="500" class="img-fluid">
         <br/>

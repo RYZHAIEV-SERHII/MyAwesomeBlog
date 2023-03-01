@@ -13,3 +13,6 @@ class Post(models.Model):
             return self.text[:70] + ' ...'
         else:
             return self.text
+
+    def __str__(self):
+        return self.title
