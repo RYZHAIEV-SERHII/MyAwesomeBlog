@@ -7,3 +7,9 @@ class Post(models.Model):
     date = models.DateTimeField()
     text = models.TextField()
     image = models.ImageField(upload_to='post_images/')
+
+    def get_summary(self):
+        if len(self.text) > 70:
+            return self.text[:70] + ' ...'
+        else:
+            return self.text
